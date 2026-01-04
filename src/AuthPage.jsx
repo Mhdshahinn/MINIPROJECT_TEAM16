@@ -26,14 +26,14 @@ const AuthPage = ({ initialMode = 'login' }) => {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
 
-        // Check if user is disabled
+        // Check if user is suspended
         const userDoc = await getDoc(doc(db, 'users', user.uid));
 
-        if (userDoc.exists() && userDoc.data().status === 'disabled') {
+        if (userDoc.exists() && userDoc.data().status === 'suspended') {
           await auth.signOut();
           setMessage({
             type: 'error',
-            text: 'This account has been disabled by the administrator.',
+            text: 'This account has been suspended by the administrator.',
           });
           setLoading(false);
           return;

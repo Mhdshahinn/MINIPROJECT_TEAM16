@@ -81,12 +81,12 @@ function App() {
     )
   }
 
-  // If user is disabled
-  if (userProfile?.status === 'disabled') {
+  // If user is suspended
+  if (userProfile?.status === 'suspended') {
     return (
       <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: '100vh', textAlign: 'center', padding: '2rem' }}>
-        <h1 style={{ color: '#ef4444' }}>Account Disabled</h1>
-        <p>Your account has been disabled by the administrator. Please contact support.</p>
+        <h1 style={{ color: '#ef4444' }}>Account Suspended</h1>
+        <p>Your account has been suspended by the administrator. Please contact support.</p>
         <button onClick={() => auth.signOut()} style={{ marginTop: '1rem', padding: '0.5rem 1rem', background: '#2563eb', color: 'white', border: 'none', borderRadius: '4px' }}>Logout</button>
       </div>
     )

@@ -28,7 +28,7 @@ const AdminDashboard = () => {
     };
 
     const toggleUserStatus = async (userId, currentStatus) => {
-        const newStatus = currentStatus === 'active' ? 'disabled' : 'active';
+        const newStatus = currentStatus === 'active' ? 'suspended' : 'active';
         try {
             await updateDoc(doc(db, 'users', userId), {
                 status: newStatus
@@ -64,7 +64,7 @@ const AdminDashboard = () => {
     const stats = {
         total: users.length,
         active: users.filter(u => u.status === 'active' && u.role !== 'admin').length,
-        disabled: users.filter(u => u.status === 'disabled').length
+        suspended: users.filter(u => u.status === 'suspended').length
     };
 
     if (loading) return (
@@ -110,8 +110,8 @@ const AdminDashboard = () => {
                     <p style={{ ...statStyle, color: '#2563eb' }}>{stats.active}</p>
                 </div>
                 <div style={cardStyle}>
-                    <p style={{ ...cardLabelStyle, color: '#64748b' }}>Disabled Accounts</p>
-                    <p style={{ ...statStyle, color: '#64748b' }}>{stats.disabled}</p>
+                    <p style={{ ...cardLabelStyle, color: '#64748b' }}>Suspended Accounts</p>
+                    <p style={{ ...statStyle, color: '#64748b' }}>{stats.suspended}</p>
                 </div>
             </div>
 
@@ -135,7 +135,7 @@ const AdminDashboard = () => {
                         >
                             <option value="all">Access: All</option>
                             <option value="active">Access: Active</option>
-                            <option value="disabled">Access: Blocked</option>
+                            <option value="suspended">Access: Suspended</option>
                         </select>
                     </div>
                 </div>
@@ -182,13 +182,13 @@ const AdminDashboard = () => {
                                             borderRadius: '30px',
                                             fontSize: '0.75rem',
                                             fontWeight: 700,
-                                            background: user.status === 'active' ? '#eff6ff' : '#f8fafc',
-                                            color: user.status === 'active' ? '#1d4ed8' : '#64748b',
-                                            border: `1px solid ${user.status === 'active' ? '#dbeafe' : '#e2e8f0'}`,
+                                            background: user.status === 'active' ? '#eff6ff' : '#fef2f2',
+                                            color: user.status === 'active' ? '#1d4ed8' : '#dc2626',
+                                            border: `1px solid ${user.status === 'active' ? '#dbeafe' : '#fecaca'}`,
                                             textTransform: 'uppercase',
                                             letterSpacing: '0.025em'
                                         }}>
-                                            {user.status === 'active' ? 'Authorized' : 'Restricted'}
+                                            {user.status === 'active' ? 'Authorized' : 'Suspended'}
                                         </span>
                                     </td>
                                     <td style={tdStyle}>
@@ -208,7 +208,7 @@ const AdminDashboard = () => {
                                                     width: '140px'
                                                 }}
                                             >
-                                                {user.status === 'active' ? 'Block Access' : 'Restore Access'}
+                                                {user.status === 'active' ? 'Suspend Account' : 'Activate Account'}
                                             </button>
                                         )}
                                     </td>
