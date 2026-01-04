@@ -8,10 +8,11 @@ import LeadGeneration from './components/LeadGeneration';
 import CampaignManager from './components/CampaignManager';
 import './styles/SubAdminDashboard.css';
 
-function SubAdminDashboard({ user }) {
+function SubAdminDashboard({ user, userProfile }) {
     const [activeSection, setActiveSection] = useState('dashboard');
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
+    const [timeLeft, setTimeLeft] = useState(null);
 
     useEffect(() => {
         const checkMobile = () => {
@@ -24,12 +25,45 @@ function SubAdminDashboard({ user }) {
         return () => window.removeEventListener('resize', checkMobile);
     }, []);
 
-    const handleLogout = async () => {
+    const handleLogout = React.useCallback(async () => {
         try {
             await signOut(auth);
         } catch (error) {
             console.error('Error signing out:', error);
         }
+    }, []);
+
+    useEffect(() => {
+        if (!userProfile?.sessionTimeout || !userProfile?.sessionStartedAt || userProfile.role === 'admin') {
+            setTimeLeft(null);
+            return;
+        }
+
+        const interval = setInterval(() => {
+            const start = new Date(userProfile.sessionStartedAt).getTime();
+            const limit = userProfile.sessionTimeout * 60 * 1000;
+            const now = new Date().getTime();
+            const remaining = Math.max(0, limit - (now - start));
+
+            if (remaining <= 0) {
+                clearInterval(interval);
+                signOut(auth).then(() => {
+                    alert("Your session has expired. You have been logged out by the administrator.");
+                    window.location.reload();
+                });
+            } else {
+                setTimeLeft(remaining);
+            }
+        }, 1000);
+
+        return () => clearInterval(interval);
+    }, [userProfile]);
+
+    const formatTime = (ms) => {
+        const totalSecs = Math.floor(ms / 1000);
+        const mins = Math.floor(totalSecs / 60);
+        const secs = totalSecs % 60;
+        return `${mins}:${secs.toString().padStart(2, '0')}`;
     };
 
     const handleSectionChange = (section) => {
@@ -46,13 +80,13 @@ function SubAdminDashboard({ user }) {
     const renderContent = () => {
         switch (activeSection) {
             case 'dashboard':
-                return <Dashboard user={user} />;
+                return <Dashboard user={user} userProfile={userProfile} />;
             case 'leads':
-                return <LeadGeneration user={user} />;
+                return <LeadGeneration user={user} userProfile={userProfile} />;
             case 'campaigns':
-                return <CampaignManager user={user} />;
+                return <CampaignManager user={user} userProfile={userProfile} />;
             default:
-                return <Dashboard user={user} />;
+                return <Dashboard user={user} userProfile={userProfile} />;
         }
     };
 
@@ -92,10 +126,34 @@ function SubAdminDashboard({ user }) {
                 />
             )}
 
+            {timeLeft !== null && (
+                <div style={{
+                    position: 'fixed',
+                    top: isMobile ? '1rem' : '1.5rem',
+                    right: '1.5rem',
+                    zIndex: 1000,
+                    background: timeLeft < 60000 ? '#fee2e2' : '#eff6ff',
+                    color: timeLeft < 60000 ? '#991b1b' : '#1e40af',
+                    padding: '0.6rem 1rem',
+                    borderRadius: '12px',
+                    fontWeight: 700,
+                    fontSize: '0.9rem',
+                    boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                    border: `1px solid ${timeLeft < 60000 ? '#fecaca' : '#dbeafe'}`,
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.5rem'
+                }}>
+                    <span style={{ fontSize: '1.1rem' }}>⏱️</span>
+                    Session Ends: {formatTime(timeLeft)}
+                </div>
+            )}
+
             <Sidebar
                 activeSection={activeSection}
                 onSectionChange={handleSectionChange}
                 user={user}
+                userProfile={userProfile}
                 onLogout={handleLogout}
                 isMobileOpen={isMobileMenuOpen}
                 isMobile={isMobile}
