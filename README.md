@@ -1,106 +1,92 @@
-# AI Sales & Lead Outreach Agent  
+# AI Sales & Lead Outreach Agent
 ### Mini Project
 
 ---
 
-## ✅ Work Done
+## Work Done
 
 | Module | Contributor |
 |------|------------|
-| **Login Page** | Tobi Tose P |
-| **Signup Page** | Muhammed Shahin P |
-| **Sub-Admin Dashboard** | Harikrishnan K |
+| Landing Page | Muhammed Shahin P |
+| Login Page | Tobi Tose P |
+| Signup Page | Muhammed Shahin P |
+| Admin Dashboard | Tobi Tose P |
+| Sub-Admin Dashboard | Harikrishnan K |
+| Firebase Authentication Setup | Harikrishnan K |
+| Firebase Database & Rules Creation | Harikrishnan K |
 
 ---
 
-## 🖼️ Project Screenshots
+## Project Overview
 
-### 🔐 Login Page
-![Login Page](https://raw.githubusercontent.com/Harikrishnankanjingattu/POSSIBLE/main/Images/Screenshot%202025-12-23%20154946.png)
+The AI Sales & Lead Outreach Agent is an intelligent, multilingual voice-automation system designed to improve lead engagement and conversion for businesses across sectors such as BFSI, EdTech, Healthcare, Retail, and Agri-Business.
 
-### 📝 Signup Page
-![Signup Page](https://raw.githubusercontent.com/Harikrishnankanjingattu/POSSIBLE/main/Images/Screenshot%202025-12-23%20160050.png)
-
-### 📊 Sub-Admin Dashboard / Firebase Auth
-![Firebase Auth](https://raw.githubusercontent.com/Harikrishnankanjingattu/POSSIBLE/main/Images/Screenshot%202025-12-23%20160113.png)
-
-### 🔥 Firebase Database & Configuration
-![Firebase Database](https://raw.githubusercontent.com/Harikrishnankanjingattu/POSSIBLE/main/Images/Screenshot%202025-12-23%20164823.png)
-
+The system replaces traditional scripted IVR systems and high-cost human telecalling teams with an emotion-aware, context-driven AI voice agent capable of conducting natural, human-like conversations in multiple Indian languages.
 
 ---
 
-## 📌 Project Overview
+## Abstract
 
-The **AI Sales & Lead Outreach Agent** is an intelligent, multilingual voice-automation system designed to improve lead engagement and conversion for businesses across sectors such as **BFSI, EdTech, Healthcare, Retail, and Agri-Business**.
-
-The system replaces traditional scripted IVR systems and expensive human telecalling teams with an **emotion-aware, context-driven AI voice agent** capable of conducting natural, human-like conversations in multiple Indian languages.
-
----
-
-## 🧠 Abstract
-
-The AI Sales & Lead Outreach Agent is an intelligent, multilingual voice-automation system developed to enhance and scale lead engagement across diverse linguistic and demographic markets. Powered by the **Gemini API**, the system utilizes advanced speech recognition, natural language understanding, and real-time reasoning to autonomously conduct follow-up calls, qualify leads, and provide personalized information with human-like clarity and empathy.
+The AI Sales & Lead Outreach Agent is a multilingual voice-automation solution developed to enhance and scale lead engagement across diverse linguistic and demographic markets. Powered by the Gemini API, the system leverages advanced speech recognition, natural language understanding, and real-time reasoning to autonomously conduct follow-up calls, qualify leads, and deliver personalized information with clarity and empathy.
 
 The solution is optimized for India’s multilingual ecosystem, supporting regional languages, dialect variations, informal speech patterns, and code-mixed conversations commonly used by customers.
 
-At the core of the interaction model is the **PESO framework**:
+At the core of the interaction model is the PESO framework:
 
-- **Pain** – Identifies customer problems  
-- **Emotion** – Detects emotional cues such as interest, hesitation, or frustration  
-- **Solution** – Provides relevant, context-aware explanations  
-- **Offer** – Delivers persuasive and personalized offers  
+- Pain – Identification of customer challenges  
+- Emotion – Detection of emotional cues such as interest, hesitation, or frustration  
+- Solution – Delivery of relevant and context-aware explanations  
+- Offer – Presentation of personalized and persuasive offers  
 
-This framework enables dynamic adjustment of tone and conversation strategy, resulting in improved trust and higher conversion rates compared to conventional automated calling systems.
+This framework enables dynamic adjustment of conversation tone and strategy, resulting in improved customer trust and higher conversion rates compared to conventional automated calling systems.
 
 The system integrates:
 - Automatic Speech Recognition (ASR)
-- Sentiment and emotion detection
+- Sentiment and emotion analysis
 - Adaptive response generation
 - Conversation fallback and recovery mechanisms
 
-By automating repetitive follow-ups and lead qualification, the system significantly reduces dependency on large telecalling teams while enabling massive outreach scalability.
+By automating repetitive follow-ups and lead qualification, the solution reduces dependency on large telecalling teams while enabling scalable outreach operations.
 
 ---
 
-## ⚙️ Key Features
+## Key Features
 
-- Multilingual voice support (Indian regional languages)
-- Emotion and intent detection
-- PESO-based persuasive communication flow
-- Context-aware and adaptive responses
-- Automatic fallback and conversation recovery
-- Scalable architecture with reduced operational cost
-
----
-
-## 🛠️ Technology Stack
-
-- **Frontend**: React + Vite  
-- **Backend**: Node.js / API Services  
-- **Database & Auth**: Firebase  
-- **AI & NLP**: Gemini API  
-- **Workflow Automation**: n8n  
-- **Speech Processing**: ASR & TTS Pipelines  
+- Multilingual voice support for Indian regional languages  
+- Emotion and intent detection  
+- PESO-based persuasive communication flow  
+- Context-aware and adaptive responses  
+- Automatic fallback and conversation recovery  
+- Secure Firebase authentication with role-based access control  
+- Scalable and cost-efficient architecture  
 
 ---
 
-## 🔗 Workflow Link
+## Technology Stack
+
+- Frontend: React with Vite  
+- Backend: Node.js and API services  
+- Database and Authentication: Firebase  
+- AI and NLP: Gemini API  
+- Workflow Automation: n8n  
+- Speech Processing: ASR and TTS pipelines  
+
+---
+
+## Workflow Reference
 
 n8n Automation Workflow:  
 https://projecthaddy.app.n8n.cloud/workflow/PcgZgQJBjrhTFwXi
 
 ---
 
-## 📋 Agile Reference
+## Agile Reference
 
 Agile Planning Template:  
 https://docs.google.com/spreadsheets/d/13grgYJ0kitDgeOYxyS-cPdC-Ch9gAa_j/edit?gid=1449291246
 
 ---
 
-## 🎯 Conclusion
+## Conclusion
 
-The AI Sales & Lead Outreach Agent delivers a scalable, emotionally intelligent, and language-aware solution for modern sales communication. By combining AI-driven voice intelligence with sentiment analysis and automated persuasion, the system enhances customer trust, improves conversion rates, and significantly reduces operational costs.
-
----
+The AI Sales & Lead Outreach Agent provides a scalable, emotionally intelligent, and language-aware solution for modern sales communication. By combining AI-driven voice interaction, sentiment analysis, and secure cloud-based role management, the system improves customer engagement, enhances conversion rates, and significantly reduces operational costs.
